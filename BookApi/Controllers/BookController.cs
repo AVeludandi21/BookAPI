@@ -68,7 +68,6 @@ namespace BookApi.Controllers
             return NoContent(); // 204 No Content
         }
 
-        // DELETE: api/book/1
         // deletes a book by ID
         [HttpDelete("{id}")]
         public IActionResult DeleteBook(int id)
