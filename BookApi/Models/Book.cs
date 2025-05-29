@@ -15,6 +15,7 @@ namespace BookApi.Models
         [StringLength(50, ErrorMessage = "Publisher cannot exceed 50 characters")]
         public string? Publisher { get; set; } // Publisher name
 
+        [Required(ErrorMessage = "Subject is required")]
         [StringLength(50, ErrorMessage = "Subject cannot exceed 50 characters")]
         public string? Subject { get; set; }   // Subject or category
     }
