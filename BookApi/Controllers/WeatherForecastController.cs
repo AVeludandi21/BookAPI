@@ -7,7 +7,7 @@ namespace BookApi.Controllers
     [Route("[controller]")] // Sets the route for this controller to match its name (e.g., "WeatherForecast").
     public class WeatherForecastController : ControllerBase
     {
-        // A list of possible weather descriptions (e.g., "Freezing", "Hot").
+        // A list of possible weather descriptions
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"

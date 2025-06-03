@@ -4,63 +4,82 @@ using BookApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace BookApi.Tests
+// This file contains unit tests for the BookController class, covering all CRUD operations.
 
-  /// Test class for BookController - tests all CRUD operations (Create, Read, Update, Delete)
+namespace BookApi.Tests
+{
+    /// <summary>
+    /// Test class for BookController - tests all CRUD operations (Create, Read, Update, Delete)
+    /// </summary>
     public class BookControllerTests
     {
-    // Controller instance that will be used for all tests
-    private readonly BookController _controller;
+        // Controller instance that will be used for all tests
+        private readonly BookController _controller;
 
+        /// <summary>
+        /// Initializes a new instance of the BookController for testing.
+        /// </summary>
         public BookControllerTests()
         {
             _controller = new BookController();
         }
 
+        /// <summary>
+        /// Tests that GetAllBooks returns all books in the initial seed data.
+        /// </summary>
         [Fact]
         public void GetAllBooks_ShouldReturnAllBooks()
         {
-            // Act
+            // Act: Call the method to get all books
             var result = _controller.GetAllBooks();
 
-            // Assert
+            // Assert: Check that the result is an ActionResult containing a collection of books
             var actionResult = Assert.IsType<ActionResult<IEnumerable<Book>>>(result);
             var books = Assert.IsAssignableFrom<IEnumerable<Book>>(actionResult.Value);
             Assert.Equal(2, books.Count()); // Initial seed data has 2 books
         }
 
+        /// <summary>
+        /// Tests that GetBook returns the correct book when a valid ID is provided.
+        /// </summary>
         [Fact]
         public void GetBook_WithValidId_ShouldReturnBook()
         {
-            // Arrange
+            // Arrange: Use a valid book ID from the seed data
             int validId = 1;
 
-            // Act
+            // Act: Call the method to get the book by ID
             var result = _controller.GetBook(validId);
 
-            // Assert
+            // Assert: Check that the returned book matches the expected title
             var actionResult = Assert.IsType<ActionResult<Book>>(result);
             var book = Assert.IsType<Book>(actionResult.Value);
             Assert.Equal("C# Basics", book.Title);
         }
 
+        /// <summary>
+        /// Tests that GetBook returns NotFound when an invalid ID is provided.
+        /// </summary>
         [Fact]
         public void GetBook_WithInvalidId_ShouldReturnNotFound()
         {
-            // Arrange
+            // Arrange: Use an invalid book ID
             int invalidId = 999;
 
-            // Act
+            // Act: Attempt to get a book with a non-existent ID
             var result = _controller.GetBook(invalidId);
 
-            // Assert
+            // Assert: Should return NotFoundResult
             Assert.IsType<NotFoundResult>(result.Result);
         }
 
+        /// <summary>
+        /// Tests that CreateBook adds a new book and returns the created book.
+        /// </summary>
         [Fact]
         public void CreateBook_ShouldAddNewBook()
         {
-            // Arrange
+            // Arrange: Create a new book object
             var newBook = new Book 
             { 
                 Title = "Test Book", 
@@ -68,10 +87,10 @@ namespace BookApi.Tests
                 Subject = "Test Subject" 
             };
 
-            // Act
+            // Act: Call the method to create a new book
             var result = _controller.CreateBook(newBook);
 
-            // Assert
+            // Assert: Check that the book was created and returned correctly
             var actionResult = Assert.IsType<ActionResult<Book>>(result);
             var createdAtResult = Assert.IsType<CreatedAtActionResult>(actionResult.Result);
             var book = Assert.IsType<Book>(createdAtResult.Value);
@@ -80,10 +99,13 @@ namespace BookApi.Tests
             Assert.Equal("Test Subject", book.Subject);
         }
 
+        /// <summary>
+        /// Tests that UpdateBook updates an existing book when a valid ID is provided.
+        /// </summary>
         [Fact]
         public void UpdateBook_WithValidId_ShouldUpdateBook()
         {
-            // Arrange
+            // Arrange: Prepare updated book data for a valid ID
             int validId = 1;
             var updatedBook = new Book 
             { 
@@ -92,10 +114,10 @@ namespace BookApi.Tests
                 Subject = "Updated Subject" 
             };
 
-            // Act
+            // Act: Call the method to update the book
             var result = _controller.UpdateBook(validId, updatedBook);
 
-            // Assert
+            // Assert: Should return NoContentResult and the book should be updated
             Assert.IsType<NoContentResult>(result);
             var getResult = _controller.GetBook(validId);
             var book = Assert.IsType<Book>(getResult.Value);
@@ -104,10 +126,13 @@ namespace BookApi.Tests
             Assert.Equal("Updated Subject", book.Subject);
         }
 
+        /// <summary>
+        /// Tests that UpdateBook returns NotFound when an invalid ID is provided.
+        /// </summary>
         [Fact]
         public void UpdateBook_WithInvalidId_ShouldReturnNotFound()
         {
-            // Arrange
+            // Arrange: Prepare updated book data for an invalid ID
             int invalidId = 999;
             var updatedBook = new Book 
             { 
@@ -116,38 +141,44 @@ namespace BookApi.Tests
                 Subject = "Updated Subject" 
             };
 
-            // Act
+            // Act: Attempt to update a non-existent book
             var result = _controller.UpdateBook(invalidId, updatedBook);
 
-            // Assert
+            // Assert: Should return NotFoundResult
             Assert.IsType<NotFoundResult>(result);
         }
 
+        /// <summary>
+        /// Tests that DeleteBook removes a book when a valid ID is provided.
+        /// </summary>
         [Fact]
         public void DeleteBook_WithValidId_ShouldRemoveBook()
         {
-            // Arrange
+            // Arrange: Use a valid book ID
             int validId = 1;
 
-            // Act
+            // Act: Call the method to delete the book
             var result = _controller.DeleteBook(validId);
 
-            // Assert
+            // Assert: Should return NoContentResult and the book should no longer exist
             Assert.IsType<NoContentResult>(result);
             var getResult = _controller.GetBook(validId);
             Assert.IsType<NotFoundResult>(getResult.Result);
         }
 
+        /// <summary>
+        /// Tests that DeleteBook returns NotFound when an invalid ID is provided.
+        /// </summary>
         [Fact]
         public void DeleteBook_WithInvalidId_ShouldReturnNotFound()
         {
-            // Arrange
+            // Arrange: Use an invalid book ID
             int invalidId = 999;
 
-            // Act
+            // Act: Attempt to delete a non-existent book
             var result = _controller.DeleteBook(invalidId);
 
-            // Assert
+            // Assert: Should return NotFoundResult
             Assert.IsType<NotFoundResult>(result);
         }
     }
