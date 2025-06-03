@@ -37,3 +37,4 @@ https://github.com/AVeludandi/BookAPI-AVeludandi.git
 - `PUT /api/book/{id}` - Update a book
 - `DELETE /api/book/{id}` - Delete a book
 - `GET /weatherforecast` - Get weather forecast
+	
