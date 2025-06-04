@@ -9,17 +9,13 @@ using System.Linq;
 
 namespace BookApi.Tests.Controllers
 {
-    /// <summary>
-    /// Contains unit tests for the WeatherForecastController class.
-    /// </summary>
+    // Contains unit tests for the WeatherForecastController class.
     public class WeatherForecastControllerTests
     {
         // Instance of the controller under test.
         private readonly WeatherForecastController _controller;
 
-        /// <summary>
-        /// Initializes a new instance of WeatherForecastController for each test, using a mock logger.
-        /// </summary>
+        // Initializes a new instance of WeatherForecastController for each test, using a mock logger.
         public WeatherForecastControllerTests()
         {
             // Initialize the controller with a mock logger
@@ -27,9 +23,7 @@ namespace BookApi.Tests.Controllers
             _controller = new WeatherForecastController(mockLogger);
         }
 
-        /// <summary>
-        /// Tests that Get returns exactly five weather forecasts.
-        /// </summary>
+        // Tests that Get returns exactly five weather forecasts.
         [Fact]
         public void Get_ReturnsFiveWeatherForecasts()
         {
@@ -41,9 +35,7 @@ namespace BookApi.Tests.Controllers
             Assert.Equal(5, result.Count());
         }
 
-        /// <summary>
-        /// Tests that Get returns valid weather forecast data for each forecast.
-        /// </summary>
+        // Tests that Get returns valid weather forecast data for each forecast.
         [Fact]
         public void Get_ReturnsValidWeatherForecasts()
         {
@@ -63,9 +55,7 @@ namespace BookApi.Tests.Controllers
             }
         }
 
-        /// <summary>
-        /// Tests that Get returns forecasts with the correct dates (next 5 days).
-        /// </summary>
+        // Tests that Get returns forecasts with the correct dates (next 5 days).
         [Fact]
         public void Get_ReturnsCorrectDates()
         {

@@ -8,25 +8,20 @@ using System.Collections.Generic;
 
 namespace BookApi.Tests
 {
-    /// <summary>
-    /// Test class for BookController - tests all CRUD operations (Create, Read, Update, Delete)
-    /// </summary>
+
+    // Test class for BookController - tests all CRUD operations (Create, Read, Update, Delete)
     public class BookControllerTests
     {
         // Controller instance that will be used for all tests
         private readonly BookController _controller;
 
-        /// <summary>
-        /// Initializes a new instance of the BookController for testing.
-        /// </summary>
+        // Initializes a new instance of the BookController for testing.
         public BookControllerTests()
         {
             _controller = new BookController();
         }
 
-        /// <summary>
-        /// Tests that GetAllBooks returns all books in the initial seed data.
-        /// </summary>
+        // Checks that GetAllBooks returns all the books that were there at the start.
         [Fact]
         public void GetAllBooks_ShouldReturnAllBooks()
         {
@@ -39,9 +34,7 @@ namespace BookApi.Tests
             Assert.Equal(2, books.Count()); // Initial seed data has 2 books
         }
 
-        /// <summary>
-        /// Tests that GetBook returns the correct book when a valid ID is provided.
-        /// </summary>
+        // Tests that GetBook returns the correct book when a valid ID is provided.
         [Fact]
         public void GetBook_WithValidId_ShouldReturnBook()
         {
@@ -57,9 +50,7 @@ namespace BookApi.Tests
             Assert.Equal("C# Basics", book.Title);
         }
 
-        /// <summary>
-        /// Tests that GetBook returns NotFound when an invalid ID is provided.
-        /// </summary>
+        // Tests that GetBook returns NotFound when an invalid ID is provided.
         [Fact]
         public void GetBook_WithInvalidId_ShouldReturnNotFound()
         {
@@ -73,9 +64,7 @@ namespace BookApi.Tests
             Assert.IsType<NotFoundResult>(result.Result);
         }
 
-        /// <summary>
-        /// Tests that CreateBook adds a new book and returns the created book.
-        /// </summary>
+        // Tests that CreateBook adds a new book and returns the created book.
         [Fact]
         public void CreateBook_ShouldAddNewBook()
         {
@@ -99,9 +88,7 @@ namespace BookApi.Tests
             Assert.Equal("Test Subject", book.Subject);
         }
 
-        /// <summary>
-        /// Tests that UpdateBook updates an existing book when a valid ID is provided.
-        /// </summary>
+        // Tests that UpdateBook updates an existing book when a valid ID is provided.
         [Fact]
         public void UpdateBook_WithValidId_ShouldUpdateBook()
         {
@@ -126,9 +113,7 @@ namespace BookApi.Tests
             Assert.Equal("Updated Subject", book.Subject);
         }
 
-        /// <summary>
-        /// Tests that UpdateBook returns NotFound when an invalid ID is provided.
-        /// </summary>
+        // Tests that UpdateBook returns NotFound when an invalid ID is provided.
         [Fact]
         public void UpdateBook_WithInvalidId_ShouldReturnNotFound()
         {
@@ -148,9 +133,7 @@ namespace BookApi.Tests
             Assert.IsType<NotFoundResult>(result);
         }
 
-        /// <summary>
-        /// Tests that DeleteBook removes a book when a valid ID is provided.
-        /// </summary>
+        // Tests that DeleteBook removes a book when a valid ID is provided.
         [Fact]
         public void DeleteBook_WithValidId_ShouldRemoveBook()
         {
@@ -166,9 +149,7 @@ namespace BookApi.Tests
             Assert.IsType<NotFoundResult>(getResult.Result);
         }
 
-        /// <summary>
-        /// Tests that DeleteBook returns NotFound when an invalid ID is provided.
-        /// </summary>
+        // Tests that DeleteBook returns NotFound when an invalid ID is provided.
         [Fact]
         public void DeleteBook_WithInvalidId_ShouldReturnNotFound()
         {
