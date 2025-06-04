@@ -25,7 +25,7 @@ namespace BookApi.Controllers
         };
 
         // Gets all books.
-        // <returns>List of all books.</returns>
+        //returns list of all books.
         [HttpGet]
         public ActionResult<IEnumerable<Book>> GetAllBooks()
         {
