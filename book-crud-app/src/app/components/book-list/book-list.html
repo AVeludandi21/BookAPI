@@ -1,0 +1,44 @@
+<div class="book-list-container">
+    <div class="header">
+        <h2>Books</h2>
+        <button (click)="onAdd()" class="add-button">Add New Book</button>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading">
+        Loading books...
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error" class="error">
+        {{ error }}
+    </div>
+
+    <!-- Books Table -->
+    <table *ngIf="!isLoading && !error && books.length > 0" class="books-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Publisher</th>
+                <th>Subject</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let book of books">
+                <td>{{ book.title }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.subject }}</td>
+                <td class="actions">
+                    <button (click)="onEdit(book.id)" class="edit-button">Edit</button>
+                    <button (click)="onDelete(book.id)" class="delete-button">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Empty State -->
+    <div *ngIf="!isLoading && !error && books.length === 0" class="empty-state">
+        No books found. Click "Add New Book" to create one.
+    </div>
+</div>

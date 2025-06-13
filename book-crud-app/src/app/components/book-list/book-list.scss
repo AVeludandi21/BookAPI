@@ -1,0 +1,58 @@
+AVeludandi\Downloads\BookAPI-AVeludandi\book-crud-app\src\app\components\book-list\book-list.component.scss
+.book-list-container {
+  padding: 2rem;
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .error-message {
+    color: red;
+    margin: 1rem 0;
+  }
+
+  .spinner {
+    margin: 2rem auto;
+  }
+
+  table {
+    width: 100%;
+    
+    .mat-column-actions {
+      width: 120px;
+      text-align: center;
+    }
+  }
+
+  .no-data {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(0, 0, 0, 0.54);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  .book-list-container {
+    padding: 1rem;
+
+    .header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    table {
+      .mat-column-id,
+      .mat-column-subject {
+        display: none;
+      }
+    }
+  }
+}

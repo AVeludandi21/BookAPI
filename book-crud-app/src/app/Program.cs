@@ -1,12 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure Kestrel to listen on specific ports
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(5000); // HTTP port
-    options.ListenAnyIP(5001, configure => configure.UseHttps()); // HTTPS port
-});
-
 // Add services to the container.
 builder.Services.AddControllers();
 
@@ -16,12 +9,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngular",
         policy =>
         {
-            policy.WithOrigins(
-                    "http://localhost:4200",
-                    "https://localhost:4200"
-                )
-                .AllowAnyMethod()
-                .AllowAnyHeader();
+            policy.WithOrigins("http://localhost:4200")
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
         });
 });
 
@@ -38,10 +28,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Correct middleware order
-app.UseCors("AllowAngular"); // CORS first
 app.UseHttpsRedirection();
+
+// Add CORS middleware before routing and authorization
+app.UseCors("AllowAngular");
+
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

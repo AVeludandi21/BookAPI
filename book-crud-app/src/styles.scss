@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+
+// Define the pink palette
+$primary-palette: mat.$pink-palette;
+$accent-palette: mat.$pink-palette;
+
+// Create the theme
+$my-primary: mat.define-palette($primary-palette, 400);
+$my-accent: mat.define-palette($accent-palette, A100, A200, A400);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+  )
+));
+
+// Apply the theme
+@include mat.all-component-themes($my-theme);
+
+// Global styles
+:root {
+  --primary-color: #ec407a;
+  --primary-lighter: #f48fb1;
+  --primary-darker: #d81b60;
+  --background-color: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #fafafa;
+}

@@ -1,0 +1,66 @@
+
+/*Creates a container with a max width of 800px*/
+.book-form-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+
+/*styles the header section with a pink background, white text, and subtle shadow effect*/
+.header {
+  background-color: #ec407a;
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/*Creates a white background form area and shadow effect*/
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/*Styles form fields to take up full width of their container with some button margin*/
+.book-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-header {
+  margin-bottom: 1.5rem;
+}
+
+.form-header h2 {
+  color: #ec407a;
+  font-size: 1.25rem;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.button-group button {
+  min-width: 120px;
+}
+
+/*styles error messages in red*/
+.error-message {
+  color: #f44336;
+  margin: 0.5rem 0;
+}
+
+mat-spinner {
+  margin: 1rem auto;
+}

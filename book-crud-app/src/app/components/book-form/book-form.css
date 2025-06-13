@@ -1,0 +1,70 @@
+.book-form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: #FF69B4;
+    color: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.form-header {
+    margin-bottom: 20px;
+}
+
+.form-header h2 {
+    color: #FF69B4;
+}
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+/* Override Material Design colors for pink theme */
+::ng-deep .mat-form-field-outline {
+    color: #FFB6C1 !important;
+}
+
+::ng-deep .mat-raised-button.mat-primary {
+    background-color: #FF69B4;
+}
+
+::ng-deep .mat-stroked-button {
+    color: #FF69B4;
+    border-color: #FF69B4;
+}
+
+.error-message {
+    color: #f44336;
+    font-size: 14px;
+}
+
+mat-spinner {
+    margin: 0 auto;
+}
