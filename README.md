@@ -1,6 +1,6 @@
 # BookApi
 
-This is a simple web API built with ASP.NET Core. It lets you manage a list of books and get a weather forecast. All data is stored in memory (no database).
+This is a simple web API built with ASP.NET Core (AI-assisted). It lets you manage a list of books and get a weather forecast. All data is stored in memory (no database).
 
 ## Features
 
