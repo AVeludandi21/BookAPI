@@ -25,10 +25,6 @@ This is a simple web API built with ASP.NET Core. It lets you manage a list of b
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-## Link
-
-https://github.com/AVeludandi/BookAPI-AVeludandi.git  
-
 ## API Endpoints
 
 - `GET /api/book` - List all books
